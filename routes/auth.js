@@ -6,11 +6,11 @@ const passport = require('../auth/local');
 //if user is logged in, loginRedirect will redirect them to their profile page
 //otherwise, they will go to the auth/register route where
 //a form is rendered for user to enter their data and username and password.
-router.get('/register', authHelpers.longinRedirect, (req, res) => {
+router.get('/register', authHelpers.loginRedirect, (req, res) => {
   res.render('auth/register');
 });
 //post user's inputted info to the database
-router.post('register', (req, res, next) => {
+router.post('/register', (req, res, next) => {
   return authHelpers.createUser(req, res)
   .then((response) => {
     console.log('registration successful');
@@ -40,3 +40,6 @@ router.get('/logout', (req, res) => {
 });
 
 module.exports = router;
+
+
+

@@ -33,7 +33,7 @@ function createUser(req, res) {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,
-    dob: req.body.email
+    dob: req.body.dob
   }).then(() => {
     res.redirect('/');
   });
@@ -55,3 +55,5 @@ module.exports = {
   loginRequired,
   createUser
 }
+
+
