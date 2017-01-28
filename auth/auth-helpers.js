@@ -38,3 +38,20 @@ function createUser(req, res) {
     res.redirect('/');
   });
 }
+
+//function called when user navigates to profile page.
+//check to make sure user is logged in first to protect the route
+//and user data. next is called to take the user to the user route
+
+function loginRequired (req, res, next) {
+  if (!req.user) return res.status(401).json({ status: 'Please log in' });
+
+  return next();
+}
+
+module.exports = {
+  comparePass,
+  loginRedirect,
+  loginRequired,
+  createUser
+}
